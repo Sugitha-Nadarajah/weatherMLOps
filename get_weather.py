@@ -1,11 +1,5 @@
-import os
-from dotenv import load_dotenv
 import requests
-
-load_dotenv()
-
-API_KEY = os.getenv("API_KEY")
-#print("Ma clé API est :", API_KEY)
+from config import API_KEY
 
 
 BASE_URL = f"http://api.weatherapi.com/v1/current.json?key={API_KEY}&q=auto:ip&aqi=n"
