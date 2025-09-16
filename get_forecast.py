@@ -50,3 +50,4 @@ def get_today_forecast_filtered():
     except requests.exceptions.RequestException as e:
         print(f"Erreur lors de la récupération de la météo du jour : {e}")
         return None
+
