@@ -40,15 +40,7 @@ def parse_weather(data: dict) -> dict:
         "pays": data["location"]["country"],
 
         "temperature_c": data["current"]["temp_c"],
-        "condition": data["current"]["condition"]["text"],
-
-        "vent_mph": data["current"]["wind_mph"],
-        "vent_kph": data["current"]["wind_kph"],
-        "vent_degree": data["current"]["wind_degree"],
-        "vent_dir": data["current"]["wind_dir"],
-
-        "pression_mb": data["current"]["pressure_mb"],
-        "pression_in": data["current"]["pressure_in"]
+        "condition": data["current"]["condition"]["text"]
     }
 
     return weather_info

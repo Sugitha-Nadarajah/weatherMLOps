@@ -1,41 +1,30 @@
-from dotenv import load_dotenv
-import os
 from get_weather import get_weather_by_ip, parse_weather
-from get_forecast import get_forecast_seven_days
-from config import API_KEY
-
+from get_forecast import get_forecast_seven_days, print_today_forecast
 
 
 if __name__ == "__main__":
     
-    load_dotenv()
-    API_KEY = os.getenv("API_KEY")
-
+    print("=== Application Météo ===\n")
+    print("Affichage de la météo actuelle et des prévisions du jour.\n")
+    print("Aujourd'hui :\n")
+    
     # --- météo actuelle ---
-
     raw_data = get_weather_by_ip()
     weather = parse_weather(raw_data)
 
     if weather:
+        print("=== Météo actuelle ===")
         for key, value in weather.items():
             print(f"{key} : {value}")
     else:
-        print("Impossible de récupérer la météo.")
-        
+        print("Impossible de récupérer la météo actuelle.")
 
-    
+    print("\n")
 
-    # --- prévisions météo ---
+    # --- prévisions météo du jour ---
     forecast_data = get_forecast_seven_days()
 
     if forecast_data:
-        print("=== Prévisions 7 jours ===")
-        print(f"Localisation : {forecast_data['location']}")
-        for day in forecast_data["forecast"]:
-            print(
-                f"{day['date']} → {day['condition']} "
-                f"({day['temp_min']}°C - {day['temp_max']}°C), "
-                f"Pluie : {day['rain_chance']}%"
-            )
+        print_today_forecast(forecast_data)
     else:
         print("Impossible de récupérer les prévisions.")
