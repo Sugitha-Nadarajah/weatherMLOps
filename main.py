@@ -1,5 +1,5 @@
 from get_weather import get_weather_by_ip, parse_weather
-from get_forecast import get_forecast_seven_days, print_today_forecast
+from get_forecast import get_today_forecast
 
 
 if __name__ == "__main__":
@@ -22,9 +22,17 @@ if __name__ == "__main__":
     print("\n")
 
     # --- prévisions météo du jour ---
-    forecast_data = get_forecast_seven_days()
+    forecast_data = get_today_forecast()
 
     if forecast_data:
-        print_today_forecast(forecast_data)
+        print(f"=== Prévisions du jour ===\nLocalisation : {forecast_data['location']}\n")
+        print(f"📅 {forecast_data['date']} → {forecast_data['condition']} "
+              f"({forecast_data['temp_min']}°C - {forecast_data['temp_max']}°C), "
+              f"Pluie : {forecast_data['rain_chance']}%\n")
+
+        for hour in forecast_data["hourly"]:
+            print(f"   ⏰ {hour['time']} | {hour['temp_c']}°C | "
+                  f"{hour['condition']} | Vent: {hour['wind_kph']} km/h | "
+                  f"Humidité: {hour['humidity']}% | Pluie: {hour['chance_of_rain']}%")
     else:
-        print("Impossible de récupérer les prévisions.")
+        print("Impossible de récupérer les prévisions du jour.")
