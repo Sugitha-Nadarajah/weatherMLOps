@@ -1,12 +1,13 @@
 import requests
 from config import API_KEY
+from datetime import datetime
 
 BASE_URL = "http://api.weatherapi.com/v1"
 
 
-def get_today_forecast():
+def get_today_forecast_filtered():
     """
-    Prédiction de la météo du jour actuel (avec détails horaires).
+    Récupère les prévisions météo du jour à partir de l'heure actuelle uniquement.
     """
     url = f"{BASE_URL}/forecast.json?key={API_KEY}&q=auto:ip&days=1&aqi=no&alerts=no"
 
@@ -19,6 +20,10 @@ def get_today_forecast():
         country = data["location"]["country"]
         today = data["forecast"]["forecastday"][0]
 
+        # Heure actuelle locale
+        current_time = datetime.now().strftime("%Y-%m-%d %H:%M")
+
+        # Filtrer les heures >= maintenant
         hourly_forecast = [
             {
                 "time": hour["time"],
@@ -29,6 +34,7 @@ def get_today_forecast():
                 "chance_of_rain": hour.get("chance_of_rain", "N/A"),
             }
             for hour in today["hour"]
+            if hour["time"] >= current_time  # filtre
         ]
 
         return {

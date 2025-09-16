@@ -1,5 +1,5 @@
 from get_weather import get_weather_by_ip, parse_weather
-from get_forecast import get_today_forecast
+from get_forecast import get_today_forecast_filtered
 
 
 if __name__ == "__main__":
@@ -22,7 +22,7 @@ if __name__ == "__main__":
     print("\n")
 
     # --- prévisions météo du jour ---
-    forecast_data = get_today_forecast()
+    forecast_data = get_today_forecast_filtered()
 
     if forecast_data:
         print(f"=== Prévisions du jour ===\nLocalisation : {forecast_data['location']}\n")
