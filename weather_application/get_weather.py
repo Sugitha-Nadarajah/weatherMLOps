@@ -1,5 +1,5 @@
 import requests
-from config import API_KEY
+from configuration_access.config import API_KEY
 
 
 BASE_URL = f"http://api.weatherapi.com/v1/current.json?key={API_KEY}&q=auto:ip&aqi=n"

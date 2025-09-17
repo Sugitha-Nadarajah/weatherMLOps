@@ -1,5 +1,5 @@
 import requests
-from config import API_KEY
+from configuration_access.config import API_KEY
 from datetime import datetime
 
 BASE_URL = "http://api.weatherapi.com/v1"

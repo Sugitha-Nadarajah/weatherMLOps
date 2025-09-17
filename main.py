@@ -1,5 +1,5 @@
-from get_weather import get_weather_by_ip, parse_weather
-from get_forecast import get_today_forecast_filtered
+from weather_application.get_weather import get_weather_by_ip, parse_weather
+from weather_application.get_forecast import get_today_forecast_filtered
 
 
 if __name__ == "__main__":
