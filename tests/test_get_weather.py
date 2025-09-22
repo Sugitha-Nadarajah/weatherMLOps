@@ -1,19 +1,22 @@
 import pytest
-from weather_application import get_weather
+from weather_application.get_weather import parse_weather
 
-# test CI for get_weather function type
+def test_parse_weather_types():
+    # Simulation de données comme l'API WeatherAPI
+    
+    fake_data = {
+        "location": {"name": "Paris", "region": "Ile-de-France", "country": "France"},
+        "current": {
+            "temp_c": 22.5,
+            "condition": {"text": "Partly cloudy"}
+        }
+    }
 
-def test_get_weather_type():
-    result = get_weather("New York")
-    assert isinstance(result, dict), "The result should be a dictionary"
-    assert "temperature" in result, "The result should contain 'temperature' key"
-    assert "humidity" in result, "The result should contain 'humidity' key"
-    assert "description" in result, "The result should contain 'description' key"
-    assert isinstance(result["temperature"], (int, float)), "'temperature' should be a number"
-    assert isinstance(result["humidity"], (int, float)), "'humidity' should be a number"
-    assert isinstance(result["description"], str), "'description' should be a string"
-    assert result["description"], "'description' should not be empty"
-    assert -50 <= result["temperature"] <= 60, "'temperature' should be within a realistic range"
-    assert 0 <= result["humidity"] <= 100, "'humidity' should be between 0 and 100"
-    assert result["description"].istitle(), "'description' should be capitalized"
-    assert len(result["description"].split()) <= 5, "'description' should be concise"
+    result = parse_weather(fake_data)
+
+    # Vérification -> types
+    assert isinstance(result["localisation"], str)
+    assert isinstance(result["region"], str)
+    assert isinstance(result["pays"], str)
+    assert isinstance(result["temperature_c"], (int, float))
+    assert isinstance(result["condition"], str)
