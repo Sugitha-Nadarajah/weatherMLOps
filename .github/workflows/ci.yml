@@ -15,7 +15,7 @@ jobs:   # <-- OBLIGATOIRE
         with:
           python-version: "3.11"
       - run: pip install -r requirements.txt
-      - run: pytest
+      - run: PYTHONPATH=. pytest
 
   docker:
     runs-on: ubuntu-latest
