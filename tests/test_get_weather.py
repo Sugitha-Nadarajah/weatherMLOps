@@ -20,3 +20,6 @@ def test_parse_weather_types():
     assert isinstance(result["pays"], str)
     assert isinstance(result["temperature_c"], (int, float))
     assert isinstance(result["condition"], str)
+
+
+
