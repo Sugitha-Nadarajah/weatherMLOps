@@ -21,11 +21,11 @@ The project is a small Python application that:
 
 To install the project:
 
-git clone https://github.com/Sugitha-Nadarajah/weatherMLOps.git
-cd weatherMLOps
-python -m venv .venv
-source .venv/bin/activate (Linux/Mac) or .venv\Scripts\activate (Windows)
-pip install -r requirements.txt
-Set your API key: export API_KEY="your_api_key"
-run the application : python main.py
-tests : pytest -v
+- git clone https://github.com/Sugitha-Nadarajah/weatherMLOps.git
+- cd weatherMLOps
+- python -m venv .venv
+- source .venv/bin/activate (Linux/Mac) or .venv\Scripts\activate (Windows)
+- pip install -r requirements.txt
+- Set your API key: export API_KEY="your_api_key"
+- run the application : python main.py
+- tests : pytest -v
