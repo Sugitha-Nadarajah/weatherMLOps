@@ -15,6 +15,6 @@ The project is a small Python application that:
 - 🌍 Detects your location automatically via IP.
 - ☀️ Shows the current weather conditions.
 - 📅 Displays today’s forecast, including hourly predictions.
--🧪 Integrated with pytest for testing.
+- 🧪 Integrated with pytest for testing.
 - 🔄 Automated workflows with GitHub Actions.
 - 🐳 Docker support (in progress).
