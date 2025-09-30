@@ -2,9 +2,9 @@ name: CI - Weather App
 
 on:
   push:
-    branches: ["test" ]   # tu peux changer selon ton besoin
+    branches: ["main","test" ]   # tu peux changer selon ton besoin
   pull_request:
-    branches: ["test" ]
+    branches: ["main","test" ]
 
 jobs:
   build-and-test:
