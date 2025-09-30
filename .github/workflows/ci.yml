@@ -1,0 +1,36 @@
+name: CI - Weather App
+
+on:
+  push:
+    branches: [ "test" ]
+  pull_request:
+    branches: [ "test" ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Étape 1 : récupérer le code source
+      - name: Checkout du code
+        uses: actions/checkout@v3
+
+      # Étape 2 : installer Python
+      - name: Installer Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.11"  
+
+      # Étape 3 : installer les dépendances
+      - name: Installer les dépendances
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      # Étape 4 : exécuter les tests (pytest)
+      - name: Lancer les tests unitaires
+        run: pytest -v
+
+      # Étape 5 (optionnelle) : lancer ton script météo
+      - name: Exécuter le script météo
+        run: python main.py
